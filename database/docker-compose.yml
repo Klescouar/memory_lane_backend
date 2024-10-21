@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  postgres:
+    build:
+      context: .
+      args:
+        POSTGRES_USER: memoryLane
+        POSTGRES_PASSWORD: memory_lane_pwd
+        POSTGRES_DB: memory_lane_database
+    image: my-postgres-db
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: memoryLane
+      POSTGRES_PASSWORD: memory_lane_pwd
+      POSTGRES_DB: memory_lane_database
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
